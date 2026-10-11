@@ -1,0 +1,34 @@
+module top_module ( 
+    input a, 
+    input b, 
+    input c,
+    input d,
+    output out1,
+    output out2
+);
+
+//子模块实例化
+mod_a u_mod_a(
+	.in({a,b,c,d}),
+	.out({out1,out2})
+);
+
+/*
+mod_a u_mod_a(
+	a,b,c,d,out1,out2
+);
+*/
+
+endmodule
+
+// 子模块
+module mod_a #(
+
+)(
+	input [3:0] in,
+	output [1:0] out
+);
+
+assign out = in[3:2];
+
+endmodule

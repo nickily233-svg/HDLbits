@@ -1,0 +1,14 @@
+`timescale 1ns/1ps
+/*
+ * title one
+ */
+module top_module #(
+	parameter CLK_FREQ = 100
+)(
+output one
+);
+
+// Insert your code here
+assign one = 1'b1;
+
+endmodule

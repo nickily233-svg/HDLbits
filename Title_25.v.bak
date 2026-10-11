@@ -1,0 +1,80 @@
+module top_module #(
+)(
+input [32-1:0] a,
+input [32-1:0] b,
+output reg [32-1:0] sum
+);
+
+wire cout1,cout2;
+
+add16 u1_add16(
+	.a(a[15:0]),
+	.b(b[15:0]),
+	.sum(sum[15:0]),
+	.cin(1'b0),
+	.cout(cout1)
+);
+
+add16 u2_add16(
+	.a(a[31:16]),
+	.b(b[31:16]),
+	.sum(sum[31:16]),
+	.cin(cout1),
+	.cout(cout2)
+);
+
+endmodule
+
+module add16 #(
+)(
+input [16-1:0] a,
+input [16-1:0] b,
+output [16-1:0]sum,
+input cin,
+output cout
+);
+
+assign {cout,sum} = a + b + cin;
+
+endmodule
+
+/**********/
+
+module top_module #(
+)(
+input [32-1:0] a,
+input [32-1:0] b,
+output [32-1:0] sum
+);
+
+wire cin = 1'b0,cout1,cout2;
+
+add16 u1_add16(
+	.a(a[16-1:0]),
+	.b(b[16-1:0]),
+	.cin(cin1),
+	.sum(sum[16-1:0]),
+	.cout(cout1)
+);
+
+add16 u2_add16(
+	.a(a[32-1:16]),
+	.b(b[32-1:16]),
+	.cin(cout1),
+	.sum(sum[32-1:16]),
+	.cout(cout2)
+);
+
+endmodule
+
+module add16(
+input [16-1:0] a,
+input [16-1:0] b,
+input cin,
+output [16-1:0] sum,
+output cout
+);
+
+assign {cout,sum} = a + b + cin;
+
+endmodule

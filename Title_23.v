@@ -1,0 +1,41 @@
+module top_module #(
+	input clk,
+	input d,
+	output q
+)(
+
+)
+
+wire clk;
+wire d;
+wire q1,q2,q3;
+
+my_dff u_my_dff_1(
+	.clk(clk),
+	.d(d),
+	.q(q1)
+);
+
+my_dff u_my_dff_2(
+	.clk(clk),
+	.d(d),
+	.q(q2)
+);
+
+my_dff u_my_dff_3(
+	.clk(clk),
+	.d(d),
+	.q(q3)
+);
+
+endmodule
+
+module my_dff #(
+
+)(
+	input clk,
+	input d,
+	output q
+);
+
+endmodule
